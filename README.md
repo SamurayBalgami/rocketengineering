@@ -62,7 +62,7 @@ When the gas reaches the speed of sound in the throat, the flow "chokes"; the am
 
 | Symbol | Meaning | Value (example) |
 | --- | --- | --- |
-| ṁ | Mass flow | Stage 1: 70, stage 2: 29, stage 3: 10 kg/s |
+| ṁ | Mass flow | Stage 1: 70, stage 2: 35, stage 3: 17.5 kg/s |
 | p_c | Chamber pressure (constant design pressure) | 50 bar = 5,000,000 Pa |
 | A_t | Throat area | Computed |
 | c* | Characteristic velocity: sums up the "quality" of the gas and temperature in one number | 1658 m/s |
@@ -78,11 +78,11 @@ c^{*} = \frac{\sqrt{R\,T_c}}{\Gamma}, \qquad \Gamma = \sqrt{\gamma}\left(\frac{2
 | γ | Heat capacity ratio | 1.2 |
 | Γ | Helper number derived from γ | 0.6485 |
 
-Result: A_t = 232 cm² (stage 1), 96 cm² (stage 2), 33 cm² (stage 3).
+Result: A_t = 232 cm² (stage 1), 116 cm² (stage 2), 58 cm² (stage 3).
 
 ## Model 2: Expansion ratio
 
-Because the nozzle exit is fixed, the expansion ratio grows as the throat shrinks: 8 → 19.3 → 56.
+Because the nozzle exit is fixed, the expansion ratio grows as the throat shrinks: 8 → 16 → 32.
 
 ```math
 \varepsilon = \frac{A_e}{A_t}
@@ -99,8 +99,8 @@ This equation cannot be inverted by hand; p_e/p_c is solved numerically.
 | Stage | ε | p_e / p_c | Exit pressure p_e |
 | --- | --- | --- | --- |
 | 1 | 8.0 | 0.01687 | 0.843 bar |
-| 2 | 19.3 | 0.00531 | 0.265 bar |
-| 3 | 56.0 | 0.00136 | 0.068 bar |
+| 2 | 16.0 | 0.00677 | 0.339 bar |
+| 3 | 32.0 | 0.00277 | 0.139 bar |
 
 ## Model 3: Exhaust velocity
 
@@ -126,8 +126,8 @@ v_e = \eta \sqrt{\frac{2\gamma}{\gamma-1}\, R\, T_c \left[1 - \left(\frac{p_e}{p
 | Stage | Fixed nozzle, v_e | Variable throat, v_e | Exit temperature T_e |
 | --- | --- | --- | --- |
 | 1 | 2487 m/s | 2487 m/s | 1621 K |
-| 2 | 2487 m/s | 2701 m/s | 1336 K |
-| 3 | 2487 m/s | 2891 m/s | 1066 K |
+| 2 | 2487 m/s | 2661 m/s | 1392 K |
+| 3 | 2487 m/s | 2799 m/s | 1199 K |
 
 ### Relation to Bernoulli
 
@@ -137,7 +137,7 @@ This formula is Bernoulli's equation extended to gases; both say "if velocity ri
 \frac{v^2}{2} + \frac{p}{\rho} = \text{constant} \quad\text{(Bernoulli, constant density)} \qquad \frac{v^2}{2} + \frac{\gamma}{\gamma-1}\,\frac{p}{\rho} = \text{constant} \quad\text{(gas nozzle)}
 ```
 
-In the nozzle the gas density drops by about 244 times from the 4.3 kg/m³ in the chamber (stage 3); plain Bernoulli gives about 1520 m/s, the real formula (without η) gives 3043 m/s.
+In the nozzle the gas density drops by about 135 times from the 4.3 kg/m³ in the chamber (stage 3); plain Bernoulli gives about 1520 m/s, the real formula (without η) gives 2946 m/s.
 
 ## Model 4: Specific impulse (Isp)
 
@@ -150,10 +150,10 @@ F = \dot{m}\, v_e + (p_e - p_a)\, A_e \qquad\qquad I_{sp} = \frac{F}{\dot{m}\, g
 | Stage | Fixed nozzle, Isp (vacuum) | Variable throat, Isp (vacuum) |
 | --- | --- | --- |
 | 1 | 276.4 s | 276.4 s |
-| 2 | 276.4 s | 292.8 s |
-| 3 | 276.4 s | 307.7 s |
+| 2 | 276.4 s | 289.6 s |
+| 3 | 276.4 s | 300.4 s |
 
-Average Isp over the atmospheric flight: 268.8 s for the fixed nozzle, 276.8 s for the variable throat (+3.0%).
+Average Isp over the atmospheric flight: 268.6 s for the fixed nozzle, 281.0 s for the variable throat (+4.6%).
 
 ## Model 5: Tsiolkovsky equation and mass budget
 
@@ -165,20 +165,20 @@ m₀: total mass when the stage starts, m_f: mass left when the stage's propella
 
 | Stage | Propellant | Empty chamber | m₀ (fixed) | m_f (fixed) | m₀ (variable) | m_f (variable) |
 | --- | --- | --- | --- | --- | --- | --- |
-| 1 | 5400 kg | 492 kg | 10,200 | 4800 | 10,268.7 | 4868.7 |
-| 2 | 2700 kg | 276 kg | 4800 | 2100 | 4868.7 | 2168.7 |
-| 3 | 900 kg | 132 kg | 2100 | 1200 | 2168.7 | 1268.7 |
+| 1 | 3000 kg | 300 kg | 10200 | 7200 | 10268.7 | 7268.7 |
+| 2 | 3000 kg | 300 kg | 7200 | 4200 | 7268.7 | 4268.7 |
+| 3 | 3000 kg | 300 kg | 4200 | 1200 | 4268.7 | 1268.7 |
 
 Empty chamber mass = 0.08 × propellant + 60 kg. Payload 300 kg.
 
 | Stage | Δv (fixed) | Δv (variable) |
 | --- | --- | --- |
-| 1 | 2043 m/s | 2023 m/s |
-| 2 | 2241 m/s | 2322 m/s |
-| 3 | 1517 m/s | 1618 m/s |
-| **Total** | **5801 m/s** | **5962 m/s** |
+| 1 | 944 m/s | 937 m/s |
+| 2 | 1461 m/s | 1512 m/s |
+| 3 | 3396 m/s | 3574 m/s |
+| **Total** | **5801 m/s** | **6023 m/s** |
 
-For comparison: if empty chambers were jettisoned after each stage (classic staging), Δv would be 7766 m/s for the fixed nozzle and 7882 m/s for the variable throat. Keeping the chambers in the body costs about 1900-2000 m/s; that is much larger than the throat gain (about 160 m/s).
+For comparison: if empty chambers were jettisoned after each stage (classic staging), Δv would be 7347 m/s for the fixed nozzle and 7550 m/s for the variable throat. Keeping the chambers in the body costs about 1500 m/s; that is much larger than the throat gain (about 220 m/s).
 
 ## Model 6: Rod geometry
 
@@ -199,8 +199,8 @@ r_t = R_p - L \sin\theta \qquad\Longrightarrow\qquad \theta = \arcsin\!\left(\fr
 | Stage | A_t | r_t | θ | z |
 | --- | --- | --- | --- | --- |
 | 1 | 232 cm² | 8.60 cm | 37.35° | 47.7 cm |
-| 2 | 96 cm² | 5.53 cm | 41.13° | 45.2 cm |
-| 3 | 33 cm² | 3.25 cm | 44.09° | 43.1 cm |
+| 2 | 116 cm² | 6.08 cm | 40.44° | 45.7 cm |
+| 3 | 58 cm² | 4.30 cm | 42.72° | 44.1 cm |
 
 **Mechanism mass (estimate).** One set has 12 rods: 12 × 0.60 m × 0.0009 m² × 1750 kg/m³ = 11.3 kg; adding 8 kg for hinges and actuators makes a set 19.3 kg. Two sets for two narrowing steps plus 30 kg of control system: 2 × 19.3 + 30 = **68.7 kg**.
 
@@ -209,9 +209,9 @@ r_t = R_p - L \sin\theta \qquad\Longrightarrow\qquad \theta = \arcsin\!\left(\fr
 | Parameter | Value |
 | --- | --- |
 | Payload | 300 kg |
-| Propellant (stage 1 / 2 / 3) | 5400 / 2700 / 900 kg |
+| Propellant (stage 1 / 2 / 3) | 3000 / 3000 / 3000 kg |
 | Empty chamber | 0.08 × propellant + 60 kg (not jettisoned) |
-| Mass flow (stage 1 / 2 / 3) | 70 / 29 / 10 kg/s |
+| Mass flow (stage 1 / 2 / 3) | 70 / 35 / 17.5 kg/s |
 | Chamber pressure | 50 bar (constant) |
 | Combustion temperature, γ, molecular weight | 3200 K, 1.2, 23 g/mol |
 | Nozzle efficiency | 0.95 |
@@ -220,24 +220,26 @@ r_t = R_p - L \sin\theta \qquad\Longrightarrow\qquad \theta = \arcsin\!\left(\fr
 
 Vertical, one-dimensional flight; gravity and air drag included; atmosphere modeled with exponentially decreasing pressure and density.
 
+The three chambers are identical in size and hold equal propellant; the mass flow halves at each stage (70 → 35 → 17.5 kg/s), so the burn times are 43 s, 86 s and 171 s. Thrust-to-weight ratio at the start of each stage (vacuum, variable throat): 1.88, 1.39, 1.23.
+
 | Result | Fixed nozzle | Variable throat |
 | --- | --- | --- |
-| Velocity at burnout | 3214 m/s | 3377 m/s |
-| Altitude at burnout | 439.4 km | 450.6 km |
-| Apogee | 1099 km | 1189 km |
-| Average Isp | 268.8 s | 276.8 s |
+| Velocity at burnout | 2820 m/s | 3047 m/s |
+| Altitude at burnout | 331.7 km | 354.9 km |
+| Apogee | 813 km | 927 km |
+| Average Isp | 268.6 s | 281.0 s |
 
 ## Efficiency
 
-The variable throat raises total velocity gain by **2.8% (+162 m/s)**; about 53% of the gross gain from Isp is retained, the rest is taken by the mechanism mass.
+The variable throat raises total velocity gain by **3.8% (+222 m/s)**; about 61% of the gross gain from Isp is retained, the rest is taken by the mechanism mass.
 
 | Measure | Fixed nozzle | Variable throat |
 | --- | --- | --- |
-| Nozzle thermal efficiency, stage 1 / 2 / 3 | 44.5% / 44.5% / 44.5% | 44.5% / 52.6% / 60.2% |
-| Isp (vacuum), stage 3 | 276.4 s | 307.7 s (+11.3%) |
-| Average Isp (flight) | 268.8 s | 276.8 s (+3.0%) |
-| Total Δv (mechanism included) | 5801 m/s | 5962 m/s (+2.79%) |
-| Payload carried for the same Δv | 300 kg | 383.3 kg (+27.8%) |
+| Nozzle thermal efficiency, stage 1 / 2 / 3 | 44.5% / 44.5% / 44.5% | 44.5% / 51.0% / 56.4% |
+| Isp (vacuum), stage 3 | 276.4 s | 300.4 s (+8.7%) |
+| Average Isp (flight) | 268.6 s | 281.0 s (+4.6%) |
+| Total Δv (mechanism included) | 5801 m/s | 6023 m/s (+3.83%) |
+| Payload carried for the same Δv | 300 kg | 415.7 kg (+38.6%) |
 
 ```math
 \eta_{\text{thermal}} = \frac{v_e^2}{2\,c_p\,T_c} = \eta^2\left[1-\left(\frac{p_e}{p_c}\right)^{\frac{\gamma-1}{\gamma}}\right]
@@ -247,12 +249,12 @@ The variable throat raises total velocity gain by **2.8% (+162 m/s)**; about 53%
 
 | Item | Value |
 | --- | --- |
-| Gross gain (as if the mechanism had no mass) | +304 m/s (6105 − 5801) |
+| Gross gain (as if the mechanism had no mass) | +365 m/s (6165 − 5801) |
 | Cost of the mechanism mass (68.7 kg) | −143 m/s |
-| Net gain | +162 m/s |
-| Share retained | 53% |
+| Net gain | +222 m/s |
+| Share retained | 61% |
 
-The break-even mechanism mass is 151.9 kg; since the estimate is 68.7 kg, there is a margin of 83.2 kg. These percentages are compared with the same rocket with a fixed nozzle that also keeps its chambers. The throat gain (about 160 m/s) does not offset the loss from not jettisoning chambers (about 1900-2000 m/s).
+The break-even mechanism mass is 184.4 kg; since the estimate is 68.7 kg, there is a margin of 115.7 kg. These percentages are compared with the same rocket with a fixed nozzle that also keeps its chambers. The throat gain (about 220 m/s) does not offset the loss from not jettisoning chambers (about 1500 m/s).
 
 ## Assumptions, limits and next steps
 
@@ -264,14 +266,14 @@ The break-even mechanism mass is 151.9 kg; since the estimate is 68.7 kg, there 
 - The mechanism mass (68.7 kg) is an estimate.
 - The rods touch gas above 3000 K in the throat; graphite coating erodes in an oxidizing environment, so thermal endurance must be computed separately.
 - The propellant pressure must be adjusted in sync as the throat narrows; otherwise chamber pressure rises.
-- A large expansion ratio such as ε = 56 can cause flow separation at sea level.
+- A large expansion ratio such as ε = 32 can cause flow separation at sea level.
 - Insulation and sealing between the ethanol annulus (freezing ≈ −114 °C) and the LOX spine (−183 °C) must be designed separately; liquid hydrogen is not used in this version.
 - Heat from the burning chamber flows into the LOX spine and into the ethanol of neighboring chambers (LOX boil-off, ethanol heating); this heat transfer was not computed.
 - The Isp loss from the distance between chamber and nozzle is not in the model.
 
 **Next steps**
 
-1. Recompute the mechanism mass with real materials and cross-sections (break-even limit 151.9 kg).
+1. Recompute the mechanism mass with real materials and cross-sections (break-even limit 184.4 kg).
 2. Sweep the number of chambers from 1 to 8 and compute the net gain.
 3. Model the control relation between throat closing speed and propellant pressure.
 4. Examine the thermal load on the rods and the life of the graphite coating.

@@ -46,12 +46,12 @@ def egzoz_hizi(pr):
 
 # ---------------- Roket (örnek evren) ----------------
 faydali_yuk = 300.0                     # kg
-yakit = [5400.0, 2700.0, 900.0]         # oda başına yakıt [kg]
+yakit = [3000.0, 3000.0, 3000.0]         # oda başına yakıt [kg]
 yapi_orani = 0.08                       # yapı = yakıtın %8'i
 oda_sabit = 60.0                        # oda başına sabit (vana, enjektör, ayırma) [kg]
 kuru = [yapi_orani * p + oda_sabit for p in yakit]
 
-mdot = [70.0, 29.0, 10.0]               # her evredeki kütlesel debi [kg/s]
+mdot = [70.0, 35.0, 17.5]               # her evredeki kütlesel debi [kg/s]
 
 # ---------------- Çubuk mekanizması ----------------
 cubuk_adet = 12

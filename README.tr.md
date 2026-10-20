@@ -62,7 +62,7 @@ Gaz boğazda ses hızına ulaşınca akış "tıkanır"; geçen gaz miktarı yal
 
 | Sembol | Anlamı | Değeri (örnek) |
 | --- | --- | --- |
-| ṁ | Debi | Evre 1: 70, evre 2: 29, evre 3: 10 kg/s |
+| ṁ | Debi | Evre 1: 70, evre 2: 35, evre 3: 17,5 kg/s |
 | p_c | Yanma odası basıncı (sabit tasarım basıncı) | 50 bar = 5 000 000 Pa |
 | A_t | Boğaz alanı | Hesaplanır |
 | c* | Karakteristik hız: gazın ve sıcaklığın "kalitesini" tek sayıda toplar | 1658 m/s |
@@ -78,11 +78,11 @@ c^{*} = \frac{\sqrt{R\,T_c}}{\Gamma}, \qquad \Gamma = \sqrt{\gamma}\left(\frac{2
 | γ | Isı oranı | 1,2 |
 | Γ | γ'dan türeyen yardımcı sayı | 0,6485 |
 
-Sonuç: A_t = 232 cm² (evre 1), 96 cm² (evre 2), 33 cm² (evre 3).
+Sonuç: A_t = 232 cm² (evre 1), 116 cm² (evre 2), 58 cm² (evre 3).
 
 ## Model 2: Genleşme oranı
 
-Nozul çıkışı sabit olduğu için boğaz küçüldükçe genleşme oranı büyür: 8 → 19,3 → 56.
+Nozul çıkışı sabit olduğu için boğaz küçüldükçe genleşme oranı büyür: 8 → 16 → 32.
 
 ```math
 \varepsilon = \frac{A_e}{A_t}
@@ -99,8 +99,8 @@ Bu denklem elle tersine çevrilemez; p_e/p_c sayısal olarak çözülür.
 | Evre | ε | p_e / p_c | Çıkış basıncı p_e |
 | --- | --- | --- | --- |
 | 1 | 8,0 | 0,01687 | 0,843 bar |
-| 2 | 19,3 | 0,00531 | 0,265 bar |
-| 3 | 56,0 | 0,00136 | 0,068 bar |
+| 2 | 16,0 | 0,00677 | 0,339 bar |
+| 3 | 32,0 | 0,00277 | 0,139 bar |
 
 ## Model 3: Egzoz hızı
 
@@ -126,8 +126,8 @@ v_e = \eta \sqrt{\frac{2\gamma}{\gamma-1}\, R\, T_c \left[1 - \left(\frac{p_e}{p
 | Evre | Sabit nozul, v_e | Değişken boğaz, v_e | Çıkış sıcaklığı T_e |
 | --- | --- | --- | --- |
 | 1 | 2487 m/s | 2487 m/s | 1621 K |
-| 2 | 2487 m/s | 2701 m/s | 1336 K |
-| 3 | 2487 m/s | 2891 m/s | 1066 K |
+| 2 | 2487 m/s | 2661 m/s | 1392 K |
+| 3 | 2487 m/s | 2799 m/s | 1199 K |
 
 ### Bernoulli ile ilişkisi
 
@@ -137,7 +137,7 @@ Bu formül, Bernoulli denkleminin gaz için genişletilmiş halidir; ikisi de "h
 \frac{v^2}{2} + \frac{p}{\rho} = \text{sabit} \quad\text{(Bernoulli, yoğunluk sabit)} \qquad \frac{v^2}{2} + \frac{\gamma}{\gamma-1}\,\frac{p}{\rho} = \text{sabit} \quad\text{(gaz nozulu)}
 ```
 
-Nozulda gazın yoğunluğu odadaki 4,3 kg/m³ değerinden yaklaşık 244 kat azalır (evre 3); saf Bernoulli yaklaşık 1520 m/s verir, gerçek formül (η'siz) 3043 m/s.
+Nozulda gazın yoğunluğu odadaki 4,3 kg/m³ değerinden yaklaşık 135 kat azalır (evre 3); saf Bernoulli yaklaşık 1520 m/s verir, gerçek formül (η'siz) 2946 m/s.
 
 ## Model 4: Özgül itki (Isp)
 
@@ -150,10 +150,10 @@ F = \dot{m}\, v_e + (p_e - p_a)\, A_e \qquad\qquad I_{sp} = \frac{F}{\dot{m}\, g
 | Evre | Sabit nozul, Isp (vakum) | Değişken boğaz, Isp (vakum) |
 | --- | --- | --- |
 | 1 | 276,4 s | 276,4 s |
-| 2 | 276,4 s | 292,8 s |
-| 3 | 276,4 s | 307,7 s |
+| 2 | 276,4 s | 289,6 s |
+| 3 | 276,4 s | 300,4 s |
 
-Atmosferdeki uçuş boyunca ortalama Isp: sabit nozulda 268,8 s, değişken boğazda 276,8 s (+%3,0).
+Atmosferdeki uçuş boyunca ortalama Isp: sabit nozulda 268,6 s, değişken boğazda 281,0 s (+%4,6).
 
 ## Model 5: Tsiolkovsky denklemi ve kütle bütçesi
 
@@ -165,20 +165,20 @@ m₀: evre başlarken toplam kütle, m_f: evre yakıtı bitince kalan kütle. Bo
 
 | Evre | Yakıt | Boş oda | m₀ (sabit) | m_f (sabit) | m₀ (değişken) | m_f (değişken) |
 | --- | --- | --- | --- | --- | --- | --- |
-| 1 | 5400 kg | 492 kg | 10 200 | 4800 | 10 268,7 | 4868,7 |
-| 2 | 2700 kg | 276 kg | 4800 | 2100 | 4868,7 | 2168,7 |
-| 3 | 900 kg | 132 kg | 2100 | 1200 | 2168,7 | 1268,7 |
+| 1 | 3000 kg | 300 kg | 10200 | 7200 | 10268,7 | 7268,7 |
+| 2 | 3000 kg | 300 kg | 7200 | 4200 | 7268,7 | 4268,7 |
+| 3 | 3000 kg | 300 kg | 4200 | 1200 | 4268,7 | 1268,7 |
 
 Boş oda kütlesi = 0,08 × yakıt + 60 kg. Faydalı yük 300 kg.
 
 | Evre | Δv (sabit) | Δv (değişken) |
 | --- | --- | --- |
-| 1 | 2043 m/s | 2023 m/s |
-| 2 | 2241 m/s | 2322 m/s |
-| 3 | 1517 m/s | 1618 m/s |
-| **Toplam** | **5801 m/s** | **5962 m/s** |
+| 1 | 944 m/s | 937 m/s |
+| 2 | 1461 m/s | 1512 m/s |
+| 3 | 3396 m/s | 3574 m/s |
+| **Toplam** | **5801 m/s** | **6023 m/s** |
 
-Kıyas: boş odalar her evre sonunda atılsaydı (klasik kademeleme) Δv sabit nozulda 7766, değişken boğazda 7882 m/s olurdu. Odaları gövdede tutmak yaklaşık 1900-2000 m/s kaybettirir; bu, boğaz kazancından (yaklaşık 160 m/s) çok daha büyüktür.
+Kıyas: boş odalar her evre sonunda atılsaydı (klasik kademeleme) Δv sabit nozulda 7347, değişken boğazda 7550 m/s olurdu. Odaları gövdede tutmak yaklaşık 1500 m/s kaybettirir; bu, boğaz kazancından (yaklaşık 220 m/s) çok daha büyüktür.
 
 ## Model 6: Çubuk geometrisi
 
@@ -199,8 +199,8 @@ r_t = R_p - L \sin\theta \qquad\Longrightarrow\qquad \theta = \arcsin\!\left(\fr
 | Evre | A_t | r_t | θ | z |
 | --- | --- | --- | --- | --- |
 | 1 | 232 cm² | 8,60 cm | 37,35° | 47,7 cm |
-| 2 | 96 cm² | 5,53 cm | 41,13° | 45,2 cm |
-| 3 | 33 cm² | 3,25 cm | 44,09° | 43,1 cm |
+| 2 | 116 cm² | 6,08 cm | 40,44° | 45,7 cm |
+| 3 | 58 cm² | 4,30 cm | 42,72° | 44,1 cm |
 
 **Mekanizma kütlesi (tahmin).** Bir takım 12 çubuktan oluşur: 12 × 0,60 m × 0,0009 m² × 1750 kg/m³ = 11,3 kg; menteşe ve aktüatör için 8 kg eklenince takım 19,3 kg. İki daraltma adımı için iki takım ve 30 kg kontrol sistemi: 2 × 19,3 + 30 = **68,7 kg**.
 
@@ -209,9 +209,9 @@ r_t = R_p - L \sin\theta \qquad\Longrightarrow\qquad \theta = \arcsin\!\left(\fr
 | Parametre | Değer |
 | --- | --- |
 | Faydalı yük | 300 kg |
-| Yakıt (evre 1 / 2 / 3) | 5400 / 2700 / 900 kg |
+| Yakıt (evre 1 / 2 / 3) | 3000 / 3000 / 3000 kg |
 | Boş oda | 0,08 × yakıt + 60 kg (atılmaz) |
-| Debi (evre 1 / 2 / 3) | 70 / 29 / 10 kg/s |
+| Debi (evre 1 / 2 / 3) | 70 / 35 / 17,5 kg/s |
 | Yanma odası basıncı | 50 bar (sabit) |
 | Yanma sıcaklığı, γ, molekül ağırlığı | 3200 K, 1,2, 23 g/mol |
 | Nozul verimi | 0,95 |
@@ -220,24 +220,26 @@ r_t = R_p - L \sin\theta \qquad\Longrightarrow\qquad \theta = \arcsin\!\left(\fr
 
 Dikey, tek boyutlu uçuş; yerçekimi ve hava direnci dahil; atmosfer üstel azalan basınç ve yoğunlukla modellendi.
 
+Üç oda aynı boyuttadır ve eşit yakıt taşır; debi her evrede yarıya iner (70 → 35 → 17,5 kg/s), yanma süreleri 43 s, 86 s ve 171 s olur. Her evre başında itki/ağırlık oranı (vakum, değişken boğaz): 1,88, 1,39, 1,23.
+
 | Sonuç | Sabit nozul | Değişken boğaz |
 | --- | --- | --- |
-| Yanma sonu hızı | 3214 m/s | 3377 m/s |
-| Yanma sonu irtifa | 439,4 km | 450,6 km |
-| Tepe noktası | 1099 km | 1189 km |
-| Ortalama Isp | 268,8 s | 276,8 s |
+| Yanma sonu hızı | 2820 m/s | 3047 m/s |
+| Yanma sonu irtifa | 331,7 km | 354,9 km |
+| Tepe noktası | 813 km | 927 km |
+| Ortalama Isp | 268,6 s | 281,0 s |
 
 ## Verim
 
-Değişken boğaz toplam hız kazancını **%2,8 (+162 m/s)** artırır; Isp'den gelen brüt kazancın yaklaşık %53'ü geriye kalır, gerisini mekanizma kütlesi yer.
+Değişken boğaz toplam hız kazancını **%3,8 (+222 m/s)** artırır; Isp'den gelen brüt kazancın yaklaşık %61'i geriye kalır, gerisini mekanizma kütlesi yer.
 
 | Ölçüt | Sabit nozul | Değişken boğaz |
 | --- | --- | --- |
-| Nozul ısıl verimi, evre 1 / 2 / 3 | %44,5 / %44,5 / %44,5 | %44,5 / %52,6 / %60,2 |
-| Isp (vakum), evre 3 | 276,4 s | 307,7 s (+%11,3) |
-| Ortalama Isp (uçuş) | 268,8 s | 276,8 s (+%3,0) |
-| Toplam Δv (mekanizma dahil) | 5801 m/s | 5962 m/s (+%2,79) |
-| Aynı Δv için taşınabilir yük | 300 kg | 383,3 kg (+%27,8) |
+| Nozul ısıl verimi, evre 1 / 2 / 3 | %44,5 / %44,5 / %44,5 | %44,5 / %51,0 / %56,4 |
+| Isp (vakum), evre 3 | 276,4 s | 300,4 s (+%8,7) |
+| Ortalama Isp (uçuş) | 268,6 s | 281,0 s (+%4,6) |
+| Toplam Δv (mekanizma dahil) | 5801 m/s | 6023 m/s (+%3,83) |
+| Aynı Δv için taşınabilir yük | 300 kg | 415,7 kg (+%38,6) |
 
 ```math
 \eta_{\text{ısıl}} = \frac{v_e^2}{2\,c_p\,T_c} = \eta^2\left[1-\left(\frac{p_e}{p_c}\right)^{\frac{\gamma-1}{\gamma}}\right]
@@ -247,12 +249,12 @@ Değişken boğaz toplam hız kazancını **%2,8 (+162 m/s)** artırır; Isp'den
 
 | Kalem | Değer |
 | --- | --- |
-| Brüt kazanç (mekanizma ağırlığı yokmuş gibi) | +304 m/s (6105 − 5801) |
+| Brüt kazanç (mekanizma ağırlığı yokmuş gibi) | +365 m/s (6165 − 5801) |
 | Mekanizma kütlesinin maliyeti (68,7 kg) | −143 m/s |
-| Net kazanç | +162 m/s |
-| Tutulan pay | %53 |
+| Net kazanç | +222 m/s |
+| Tutulan pay | %61 |
 
-Başa baş mekanizma kütlesi 151,9 kg'dır; tahmin 68,7 kg olduğundan 83,2 kg pay kalır. Bu yüzdeler, odaları gövdede tutan aynı roketin sabit nozullu haliyle kıyaslanır. Boğaz kazancı (yaklaşık 160 m/s), odaları atmamanın kaybını (yaklaşık 1900-2000 m/s) kapatmaz.
+Başa baş mekanizma kütlesi 184,4 kg'dır; tahmin 68,7 kg olduğundan 115,7 kg pay kalır. Bu yüzdeler, odaları gövdede tutan aynı roketin sabit nozullu haliyle kıyaslanır. Boğaz kazancı (yaklaşık 220 m/s), odaları atmamanın kaybını (yaklaşık 1500 m/s) kapatmaz.
 
 ## Varsayımlar, sınırlar ve sonraki adımlar
 
@@ -264,14 +266,14 @@ Başa baş mekanizma kütlesi 151,9 kg'dır; tahmin 68,7 kg olduğundan 83,2 kg 
 - Mekanizma kütlesi (68,7 kg) tahmindir.
 - Çubuklar boğazda 3000 K üzerindeki gazla temas eder; grafit kaplama oksitleyici ortamda aşınır, ısıl dayanım ayrıca hesaplanmalı.
 - Boğaz daralırken yakıt basıncı da senkron ayarlanmalı; yoksa yanma odası basıncı yükselir.
-- ε = 56 gibi büyük genleşme oranı deniz seviyesinde akış ayrılmasına yol açabilir.
+- ε = 32 gibi büyük genleşme oranı deniz seviyesinde akış ayrılmasına yol açabilir.
 - Etanol halkası (donma ≈ −114 °C) ile LOX omurgası (−183 °C) arasında yalıtım ve sızdırmazlık ayrıca tasarlanmalı; sıvı hidrojen bu sürümde kullanılmıyor.
 - Yanan odanın ısısı LOX omurgasına ve komşu odaların etanoluna geçer (LOX buharlaşması, etanol ısınması); ısı geçişi hesaplanmadı.
 - Oda-nozul uzaklığının yol açacağı Isp kaybı modelde yok.
 
 **Sonraki adımlar**
 
-1. Mekanizma kütlesini gerçek malzeme ve kesitlerle yeniden hesapla (başa baş sınır 151,9 kg).
+1. Mekanizma kütlesini gerçek malzeme ve kesitlerle yeniden hesapla (başa baş sınır 184,4 kg).
 2. Oda sayısını 1'den 8'e değiştirip net kazancı tara.
 3. Boğaz kapanma hızı ile yakıt basıncı arasındaki kontrol ilişkisini modelle.
 4. Çubukların ısıl yükünü ve grafit kaplamanın ömrünü incele.
