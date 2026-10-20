@@ -54,7 +54,9 @@ This section is not included in the model: mixture ratio (O/F), line diameters a
 
 If the mass flow drops, the throat must shrink to keep the chamber pressure constant.
 
-$$\dot{m} = \frac{p_c \, A_t}{c^*} \qquad\Longrightarrow\qquad A_t = \frac{\dot{m}\, c^*}{p_c}$$
+```math
+\dot{m} = \frac{p_c \, A_t}{c^{*}} \qquad\Longrightarrow\qquad A_t = \frac{\dot{m}\, c^{*}}{p_c}
+```
 
 When the gas reaches the speed of sound in the throat, the flow "chokes"; the amount of gas passing depends only on the chamber conditions and the throat area.
 
@@ -65,7 +67,9 @@ When the gas reaches the speed of sound in the throat, the flow "chokes"; the am
 | A_t | Throat area | Computed |
 | c* | Characteristic velocity: sums up the "quality" of the gas and temperature in one number | 1658 m/s |
 
-$$c^* = \frac{\sqrt{R\,T_c}}{\Gamma}, \qquad \Gamma = \sqrt{\gamma}\left(\frac{2}{\gamma+1}\right)^{\frac{\gamma+1}{2(\gamma-1)}}$$
+```math
+c^{*} = \frac{\sqrt{R\,T_c}}{\Gamma}, \qquad \Gamma = \sqrt{\gamma}\left(\frac{2}{\gamma+1}\right)^{\frac{\gamma+1}{2(\gamma-1)}}
+```
 
 | Symbol | Meaning | Value (example) |
 | --- | --- | --- |
@@ -80,11 +84,15 @@ Result: A_t = 232 cm² (stage 1), 96 cm² (stage 2), 33 cm² (stage 3).
 
 Because the nozzle exit is fixed, the expansion ratio grows as the throat shrinks: 8 → 19.3 → 56.
 
-$$\varepsilon = \frac{A_e}{A_t}$$
+```math
+\varepsilon = \frac{A_e}{A_t}
+```
 
 The exit area was chosen as 8 times the stage 1 throat: A_e = 8 × 232 = 1857 cm² (it belongs to the nozzle body and does not change in flight). The relation between area ratio and pressure ratio:
 
-$$\varepsilon = \frac{\Gamma}{\left(\frac{p_e}{p_c}\right)^{1/\gamma}\sqrt{\frac{2\gamma}{\gamma-1}\left[1-\left(\frac{p_e}{p_c}\right)^{\frac{\gamma-1}{\gamma}}\right]}}$$
+```math
+\varepsilon = \frac{\Gamma}{\left(\frac{p_e}{p_c}\right)^{1/\gamma}\sqrt{\frac{2\gamma}{\gamma-1}\left[1-\left(\frac{p_e}{p_c}\right)^{\frac{\gamma-1}{\gamma}}\right]}}
+```
 
 This equation cannot be inverted by hand; p_e/p_c is solved numerically.
 
@@ -98,11 +106,15 @@ This equation cannot be inverted by hand; p_e/p_c is solved numerically.
 
 As the gas expands it cools, and the heat energy it loses becomes velocity.
 
-$$\frac{v_e^2}{2} = c_p\,(T_c - T_e) \quad (1) \qquad c_p = \frac{\gamma R}{\gamma - 1} \quad (2) \qquad \frac{T_e}{T_c} = \left(\frac{p_e}{p_c}\right)^{\frac{\gamma-1}{\gamma}} \quad (3)$$
+```math
+\frac{v_e^2}{2} = c_p\,(T_c - T_e) \quad (1) \qquad c_p = \frac{\gamma R}{\gamma - 1} \quad (2) \qquad \frac{T_e}{T_c} = \left(\frac{p_e}{p_c}\right)^{\frac{\gamma-1}{\gamma}} \quad (3)
+```
 
 (1) is energy conservation, (2) is the heat capacity of an ideal gas, (3) is the temperature-pressure relation for expansion without heat exchange (isentropic). Combining them:
 
-$$v_e = \eta \sqrt{\frac{2\gamma}{\gamma-1}\, R\, T_c \left[1 - \left(\frac{p_e}{p_c}\right)^{\frac{\gamma-1}{\gamma}}\right]}$$
+```math
+v_e = \eta \sqrt{\frac{2\gamma}{\gamma-1}\, R\, T_c \left[1 - \left(\frac{p_e}{p_c}\right)^{\frac{\gamma-1}{\gamma}}\right]}
+```
 
 | Symbol | Meaning | Value (example) |
 | --- | --- | --- |
@@ -121,13 +133,17 @@ $$v_e = \eta \sqrt{\frac{2\gamma}{\gamma-1}\, R\, T_c \left[1 - \left(\frac{p_e}
 
 This formula is Bernoulli's equation extended to gases; both say "if velocity rises, pressure energy falls". The difference is density:
 
-$$\frac{v^2}{2} + \frac{p}{\rho} = \text{constant} \quad\text{(Bernoulli, constant density)} \qquad \frac{v^2}{2} + \frac{\gamma}{\gamma-1}\,\frac{p}{\rho} = \text{constant} \quad\text{(gas nozzle)}$$
+```math
+\frac{v^2}{2} + \frac{p}{\rho} = \text{constant} \quad\text{(Bernoulli, constant density)} \qquad \frac{v^2}{2} + \frac{\gamma}{\gamma-1}\,\frac{p}{\rho} = \text{constant} \quad\text{(gas nozzle)}
+```
 
 In the nozzle the gas density drops by about 244 times from the 4.3 kg/m³ in the chamber (stage 3); plain Bernoulli gives about 1520 m/s, the real formula (without η) gives 3043 m/s.
 
 ## Model 4: Specific impulse (Isp)
 
-$$F = \dot{m}\, v_e + (p_e - p_a)\, A_e \qquad\qquad I_{sp} = \frac{F}{\dot{m}\, g_0}$$
+```math
+F = \dot{m}\, v_e + (p_e - p_a)\, A_e \qquad\qquad I_{sp} = \frac{F}{\dot{m}\, g_0}
+```
 
 (p_a: ambient pressure, 0 in vacuum.)
 
@@ -141,7 +157,9 @@ Average Isp over the atmospheric flight: 268.8 s for the fixed nozzle, 276.8 s f
 
 ## Model 5: Tsiolkovsky equation and mass budget
 
-$$\Delta v_i = I_{sp,i}\, g_0 \ln\frac{m_{0,i}}{m_{f,i}} \qquad\qquad \Delta v = \sum_i \Delta v_i$$
+```math
+\Delta v_i = I_{sp,i}\, g_0 \ln\frac{m_{0,i}}{m_{f,i}} \qquad\qquad \Delta v = \sum_i \Delta v_i
+```
 
 m₀: total mass when the stage starts, m_f: mass left when the stage's propellant is used up. Empty chambers are not jettisoned; the m₀ of the next stage equals the m_f of the previous one. The mechanism (68.7 kg) also stays on the rocket.
 
@@ -166,7 +184,9 @@ For comparison: if empty chambers were jettisoned after each stage (classic stag
 
 The throat radius depends on the angle the rod makes with the axis.
 
-$$r_t = R_p - L \sin\theta \qquad\Longrightarrow\qquad \theta = \arcsin\!\left(\frac{R_p - r_t}{L}\right), \qquad r_t = \sqrt{\frac{A_t}{\pi}}$$
+```math
+r_t = R_p - L \sin\theta \qquad\Longrightarrow\qquad \theta = \arcsin\!\left(\frac{R_p - r_t}{L}\right), \qquad r_t = \sqrt{\frac{A_t}{\pi}}
+```
 
 | Symbol | Meaning | Value (example) |
 | --- | --- | --- |
@@ -219,7 +239,9 @@ The variable throat raises total velocity gain by **2.8% (+162 m/s)**; about 53%
 | Total Δv (mechanism included) | 5801 m/s | 5962 m/s (+2.79%) |
 | Payload carried for the same Δv | 300 kg | 383.3 kg (+27.8%) |
 
-$$\eta_{\text{thermal}} = \frac{v_e^2}{2\,c_p\,T_c} = \eta^2\left[1-\left(\frac{p_e}{p_c}\right)^{\frac{\gamma-1}{\gamma}}\right]$$
+```math
+\eta_{\text{thermal}} = \frac{v_e^2}{2\,c_p\,T_c} = \eta^2\left[1-\left(\frac{p_e}{p_c}\right)^{\frac{\gamma-1}{\gamma}}\right]
+```
 
 **Net contribution of the mechanism:**
 

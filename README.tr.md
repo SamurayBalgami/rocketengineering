@@ -54,7 +54,9 @@ Modelde bu bölüm hesaba katılmadı: karışım oranı (O/F), hat çapları ve
 
 Debi düşerse, yanma odası basıncını sabit tutmak için boğaz küçülmek zorundadır.
 
-$$\dot{m} = \frac{p_c \, A_t}{c^*} \qquad\Longrightarrow\qquad A_t = \frac{\dot{m}\, c^*}{p_c}$$
+```math
+\dot{m} = \frac{p_c \, A_t}{c^{*}} \qquad\Longrightarrow\qquad A_t = \frac{\dot{m}\, c^{*}}{p_c}
+```
 
 Gaz boğazda ses hızına ulaşınca akış "tıkanır"; geçen gaz miktarı yalnızca odadaki koşullara ve boğaz alanına bağlıdır.
 
@@ -65,7 +67,9 @@ Gaz boğazda ses hızına ulaşınca akış "tıkanır"; geçen gaz miktarı yal
 | A_t | Boğaz alanı | Hesaplanır |
 | c* | Karakteristik hız: gazın ve sıcaklığın "kalitesini" tek sayıda toplar | 1658 m/s |
 
-$$c^* = \frac{\sqrt{R\,T_c}}{\Gamma}, \qquad \Gamma = \sqrt{\gamma}\left(\frac{2}{\gamma+1}\right)^{\frac{\gamma+1}{2(\gamma-1)}}$$
+```math
+c^{*} = \frac{\sqrt{R\,T_c}}{\Gamma}, \qquad \Gamma = \sqrt{\gamma}\left(\frac{2}{\gamma+1}\right)^{\frac{\gamma+1}{2(\gamma-1)}}
+```
 
 | Sembol | Anlamı | Değeri (örnek) |
 | --- | --- | --- |
@@ -80,11 +84,15 @@ Sonuç: A_t = 232 cm² (evre 1), 96 cm² (evre 2), 33 cm² (evre 3).
 
 Nozul çıkışı sabit olduğu için boğaz küçüldükçe genleşme oranı büyür: 8 → 19,3 → 56.
 
-$$\varepsilon = \frac{A_e}{A_t}$$
+```math
+\varepsilon = \frac{A_e}{A_t}
+```
 
 Çıkış alanı evre 1'in boğazının 8 katı seçildi: A_e = 8 × 232 = 1857 cm² (nozul gövdesine aittir, uçuşta değişmez). Alan oranı ile basınç oranı arasındaki bağ:
 
-$$\varepsilon = \frac{\Gamma}{\left(\frac{p_e}{p_c}\right)^{1/\gamma}\sqrt{\frac{2\gamma}{\gamma-1}\left[1-\left(\frac{p_e}{p_c}\right)^{\frac{\gamma-1}{\gamma}}\right]}}$$
+```math
+\varepsilon = \frac{\Gamma}{\left(\frac{p_e}{p_c}\right)^{1/\gamma}\sqrt{\frac{2\gamma}{\gamma-1}\left[1-\left(\frac{p_e}{p_c}\right)^{\frac{\gamma-1}{\gamma}}\right]}}
+```
 
 Bu denklem elle tersine çevrilemez; p_e/p_c sayısal olarak çözülür.
 
@@ -98,11 +106,15 @@ Bu denklem elle tersine çevrilemez; p_e/p_c sayısal olarak çözülür.
 
 Gaz genleşirken soğur, kaybettiği ısı enerjisi hıza dönüşür.
 
-$$\frac{v_e^2}{2} = c_p\,(T_c - T_e) \quad (1) \qquad c_p = \frac{\gamma R}{\gamma - 1} \quad (2) \qquad \frac{T_e}{T_c} = \left(\frac{p_e}{p_c}\right)^{\frac{\gamma-1}{\gamma}} \quad (3)$$
+```math
+\frac{v_e^2}{2} = c_p\,(T_c - T_e) \quad (1) \qquad c_p = \frac{\gamma R}{\gamma - 1} \quad (2) \qquad \frac{T_e}{T_c} = \left(\frac{p_e}{p_c}\right)^{\frac{\gamma-1}{\gamma}} \quad (3)
+```
 
 (1) enerji korunumu, (2) ideal gazın ısı kapasitesi, (3) ısı alışverişsiz (izentropik) genleşmede sıcaklık-basınç bağıdır. Birleştirince:
 
-$$v_e = \eta \sqrt{\frac{2\gamma}{\gamma-1}\, R\, T_c \left[1 - \left(\frac{p_e}{p_c}\right)^{\frac{\gamma-1}{\gamma}}\right]}$$
+```math
+v_e = \eta \sqrt{\frac{2\gamma}{\gamma-1}\, R\, T_c \left[1 - \left(\frac{p_e}{p_c}\right)^{\frac{\gamma-1}{\gamma}}\right]}
+```
 
 | Sembol | Anlamı | Değeri (örnek) |
 | --- | --- | --- |
@@ -121,13 +133,17 @@ $$v_e = \eta \sqrt{\frac{2\gamma}{\gamma-1}\, R\, T_c \left[1 - \left(\frac{p_e}
 
 Bu formül, Bernoulli denkleminin gaz için genişletilmiş halidir; ikisi de "hız artarsa basınç enerjisi azalır" der. Fark yoğunluktadır:
 
-$$\frac{v^2}{2} + \frac{p}{\rho} = \text{sabit} \quad\text{(Bernoulli, yoğunluk sabit)} \qquad \frac{v^2}{2} + \frac{\gamma}{\gamma-1}\,\frac{p}{\rho} = \text{sabit} \quad\text{(gaz nozulu)}$$
+```math
+\frac{v^2}{2} + \frac{p}{\rho} = \text{sabit} \quad\text{(Bernoulli, yoğunluk sabit)} \qquad \frac{v^2}{2} + \frac{\gamma}{\gamma-1}\,\frac{p}{\rho} = \text{sabit} \quad\text{(gaz nozulu)}
+```
 
 Nozulda gazın yoğunluğu odadaki 4,3 kg/m³ değerinden yaklaşık 244 kat azalır (evre 3); saf Bernoulli yaklaşık 1520 m/s verir, gerçek formül (η'siz) 3043 m/s.
 
 ## Model 4: Özgül itki (Isp)
 
-$$F = \dot{m}\, v_e + (p_e - p_a)\, A_e \qquad\qquad I_{sp} = \frac{F}{\dot{m}\, g_0}$$
+```math
+F = \dot{m}\, v_e + (p_e - p_a)\, A_e \qquad\qquad I_{sp} = \frac{F}{\dot{m}\, g_0}
+```
 
 (p_a: dış basınç, vakumda 0.)
 
@@ -141,7 +157,9 @@ Atmosferdeki uçuş boyunca ortalama Isp: sabit nozulda 268,8 s, değişken boğ
 
 ## Model 5: Tsiolkovsky denklemi ve kütle bütçesi
 
-$$\Delta v_i = I_{sp,i}\, g_0 \ln\frac{m_{0,i}}{m_{f,i}} \qquad\qquad \Delta v = \sum_i \Delta v_i$$
+```math
+\Delta v_i = I_{sp,i}\, g_0 \ln\frac{m_{0,i}}{m_{f,i}} \qquad\qquad \Delta v = \sum_i \Delta v_i
+```
 
 m₀: evre başlarken toplam kütle, m_f: evre yakıtı bitince kalan kütle. Boş odalar atılmaz; sonraki evrenin m₀'ı önceki evrenin m_f'sine eşittir. Mekanizma (68,7 kg) da roketin üzerinde kalır.
 
@@ -166,7 +184,9 @@ Kıyas: boş odalar her evre sonunda atılsaydı (klasik kademeleme) Δv sabit n
 
 Boğaz yarıçapı, çubuğun eksenle yaptığı açıya bağlıdır.
 
-$$r_t = R_p - L \sin\theta \qquad\Longrightarrow\qquad \theta = \arcsin\!\left(\frac{R_p - r_t}{L}\right), \qquad r_t = \sqrt{\frac{A_t}{\pi}}$$
+```math
+r_t = R_p - L \sin\theta \qquad\Longrightarrow\qquad \theta = \arcsin\!\left(\frac{R_p - r_t}{L}\right), \qquad r_t = \sqrt{\frac{A_t}{\pi}}
+```
 
 | Sembol | Anlamı | Değeri (örnek) |
 | --- | --- | --- |
@@ -219,7 +239,9 @@ Değişken boğaz toplam hız kazancını **%2,8 (+162 m/s)** artırır; Isp'den
 | Toplam Δv (mekanizma dahil) | 5801 m/s | 5962 m/s (+%2,79) |
 | Aynı Δv için taşınabilir yük | 300 kg | 383,3 kg (+%27,8) |
 
-$$\eta_{\text{ısıl}} = \frac{v_e^2}{2\,c_p\,T_c} = \eta^2\left[1-\left(\frac{p_e}{p_c}\right)^{\frac{\gamma-1}{\gamma}}\right]$$
+```math
+\eta_{\text{ısıl}} = \frac{v_e^2}{2\,c_p\,T_c} = \eta^2\left[1-\left(\frac{p_e}{p_c}\right)^{\frac{\gamma-1}{\gamma}}\right]
+```
 
 **Mekanizmanın net katkısı:**
 
