@@ -10,7 +10,7 @@ Roketin omurgasında üst üste dizili yanma odaları vardır; bunlara bu doküm
 
 Çubuklar grafit kaplamalıdır ve yüksek sıcaklığa dayanır. Her çubuğun bir ucu nozulun çevresine bağlıdır, öbür ucu salınarak boğazın içine doğru iner. Salınımın merkezi aşağı indikçe boğaz küçülür. Nozul çıkışı değişmediği için boğaz küçüldükçe çıkışın boğaza oranı (genleşme oranı) büyür.
 
-Omurgadaki enjektör boruları etanol ile sıvı oksijen ya da sıvı hidrojen basar; miktar azdan çoğa ayarlanır. Etanol ile sıvı gazlar arasına hafif bir yalıtım malzemesi konur.
+Yakıt ve yükseltgen ayrı yollardan gelir: **sıvı oksijen (LOX) merkezdeki omurgadan**, **etanol ise motor gövdesi ile dış duvar arasındaki halka aralıktan** odalara basılır. Etanol halkası, yanan odalarla dış duvar arasında bir ısıl tampon görevi de görür. Her oda yalnızca kendi vanalarıyla beslenir; miktar azdan çoğa ayarlanır. Ayrıntı için "Besleme sistemi ve yerleşim" bölümüne bakın.
 
 **Ana savı:** boğazı debiyle birlikte daraltmak Isp'yi (özgül itkiyi) yükseltir.
 **Karşı ağırlık:** çubuk mekanizmasının kütlesi. Doküman bu ikisini birlikte hesaplar.
@@ -30,6 +30,23 @@ Omurgadaki enjektör boruları etanol ile sıvı oksijen ya da sıvı hidrojen b
 | Δv | Roketin kazanabileceği toplam hız değişimi | m/s |
 
 Yerçekimi ivmesi g₀ = 9,80665 m/s².
+
+## Besleme sistemi ve yerleşim
+
+| Hat | Yol | Not |
+| --- | --- | --- |
+| LOX (yükseltgen) | Merkezdeki omurga | −183 °C; çevre odaların ısısından yalıtılmalı |
+| Etanol (yakıt) | Motor gövdesi ile dış duvar arasındaki halka | −114 °C'de donar; LOX hattından uzak ve yalıtımlı olmalı |
+| Temizleme (purge) | Azot veya helyum | Başlatma, kapatma ve ayırmada hatları temizler |
+
+Tasarım ilkeleri:
+
+- **Yakıt ve LOX enjektör yüzeyine kadar hiçbir yerde temas etmez.** Önceden karışan yakıt ve yükseltgen boruda geri tepmeye (flashback) yol açabilir; buluşma yalnızca yanma odasının içinde, enjektörde olur.
+- **Her hatta çek valf ve her odanın kendi vanası vardır.** Yalnızca yanan odaya besleme yapılır; yanmayan odalara akış kapalıdır.
+- **Enjektör basınç düşüşü** yanma basıncının yaklaşık %15-25'i kadar seçilir; yanma titreşimini (chugging) önlemek için gereklidir. 50 bar yanma basıncında besleme basıncı yaklaşık 60 bar olur (tahmin).
+- **Sıralama:** genel uygulamada yakıt önce açılır, LOX sonra; kapatırken LOX önce kesilir.
+
+Modelde bu bölüm hesaba katılmadı: karışım oranı (O/F), hat çapları ve debi dağılımı modellenmedi. Vana, enjektör ve purge donanımının kütlesi, boş oda kütlesindeki sabit 60 kg'ın içinde sayıldı; hatların kütlesi ayrıca hesaplanmadı. Bu bölüm hesapla doğrulanmamış tasarım ilkeleridir.
 
 ## Model 1: Boğaz alanı ve debi
 
@@ -224,7 +241,8 @@ Başa baş mekanizma kütlesi 151,9 kg'dır; tahmin 68,7 kg olduğundan 83,2 kg 
 - Çubuklar boğazda 3000 K üzerindeki gazla temas eder; grafit kaplama oksitleyici ortamda aşınır, ısıl dayanım ayrıca hesaplanmalı.
 - Boğaz daralırken yakıt basıncı da senkron ayarlanmalı; yoksa yanma odası basıncı yükselir.
 - ε = 56 gibi büyük genleşme oranı deniz seviyesinde akış ayrılmasına yol açabilir.
-- Etanol (≈ −114 °C), sıvı oksijen (−183 °C) ve sıvı hidrojen (−253 °C) arası yalıtım ve sızdırmazlık ayrıca tasarlanmalı.
+- Etanol halkası (donma ≈ −114 °C) ile LOX omurgası (−183 °C) arasında yalıtım ve sızdırmazlık ayrıca tasarlanmalı; sıvı hidrojen bu sürümde kullanılmıyor.
+- Yanan odanın ısısı LOX omurgasına ve komşu odaların etanoluna geçer (LOX buharlaşması, etanol ısınması); ısı geçişi hesaplanmadı.
 - Oda-nozul uzaklığının yol açacağı Isp kaybı modelde yok.
 
 **Sonraki adımlar**
@@ -234,6 +252,12 @@ Başa baş mekanizma kütlesi 151,9 kg'dır; tahmin 68,7 kg olduğundan 83,2 kg 
 3. Boğaz kapanma hızı ile yakıt basıncı arasındaki kontrol ilişkisini modelle.
 4. Çubukların ısıl yükünü ve grafit kaplamanın ömrünü incele.
 5. Boş odaları atmanın (ayırma mekanizması) mümkün olup olmadığını ve getirisini hesapla.
+6. Besleme sistemini sayıyla modelle: O/F oranı, hat çapları, enjektör basınç düşüşü.
+7. Yanan odadan LOX omurgasına ve komşu odaların etanoluna ısı geçişini hesapla.
+
+## Aviyonik
+
+Aviyonik yazılım için bir gerçek zamanlı çekirdek (kernel) kullanılması planlanıyor; henüz tasarlanmadı. Görevleri: evreye göre vana sıralaması, besleme basıncının izlenmesi, çubuk açısının debiyle birlikte ayarlanması (Model 1 ve 6), sensör okuma ve emniyet kesmeleri.
 
 ## Kod
 
