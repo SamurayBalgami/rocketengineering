@@ -297,4 +297,4 @@ To try classic staging that jettisons empty chambers, set `ODA_ATILIR = True` in
 
 ## License
 
-Text: CC BY 4.0 · Code: MIT (a license file must be added).
+MIT License (text and code). See [LICENSE](LICENSE).

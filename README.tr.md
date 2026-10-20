@@ -297,4 +297,4 @@ Boş odaları atan klasik kademelemeyi denemek için dosyadaki `ODA_ATILIR = Tru
 
 ## Lisans
 
-Metin: CC BY 4.0 · Kod: MIT (lisans dosyası eklenmelidir).
+MIT Lisansı (metin ve kod). Bkz. [LICENSE](LICENSE).
